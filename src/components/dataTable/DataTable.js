@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './DataTable.css';
 import { geneDataType } from '../../helpers/types';
+import { AssociationScoreChart } from '../../components';
 
 function DataTable(props) {
   const { data } = props;
   const [rows, setRows] = useState(<></>);
   const [expandedRows, setExpandedRows] = useState([]);
-  
+
   const headers = (
     <tr>
       <th> </th>
@@ -40,11 +41,14 @@ function DataTable(props) {
         <td>{item.association_score.overall}</td>
       </tr>
     ];
-
+    
     if (isRowExpanded) {
+      const { datatypes } = item.association_score;
       itemRow.push(
         <tr key={`${item.id}-expanded`} >
-          <td colSpan="5" ><div>teste</div></td>
+          <td colSpan="5" >
+            <AssociationScoreChart datatypes={datatypes}/>
+          </td>
         </tr>
       );
     }

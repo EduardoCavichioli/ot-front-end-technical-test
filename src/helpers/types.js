@@ -9,9 +9,19 @@ export const targetType = PropTypes.shape({
   tractability: PropTypes.object
 });
 
+export const datatypesType = PropTypes.shape({
+  literature: PropTypes.number,
+  rna_expression: PropTypes.number,
+  genetic_association: PropTypes.number,
+  somatic_mutation: PropTypes.number,
+  known_drug: PropTypes.number,
+  animal_model: PropTypes.number,
+  affected_pathway: PropTypes.number
+});
+
 export const associationScoreType = PropTypes.shape({
   overall: PropTypes.number,
-  dataTypes: PropTypes.object,
+  datatypes: datatypesType,
   datasources: PropTypes.object
 });
 
