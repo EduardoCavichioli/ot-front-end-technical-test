@@ -1,0 +1,16 @@
+table {
+  border-collapse: collapse;
+}
+
+td {
+  padding: 10px;
+}
+
+td.expand {
+  color: blue;
+  font-weight: bold;
+}
+
+table, td, th {
+  border: 1px solid lightgray;
+}
