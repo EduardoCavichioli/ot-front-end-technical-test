@@ -9,6 +9,7 @@ td {
 td.expand {
   color: blue;
   font-weight: bold;
+  cursor: pointer;
 }
 
 table, td, th {
