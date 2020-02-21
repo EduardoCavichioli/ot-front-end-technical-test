@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './DataTable.css';
 import { geneDataType } from '../../helpers/types';
 
 function DataTable(props) {
   const { data } = props;
-
+  const [rows, setRows] = useState(<></>);
   const headers = (
     <tr>
       <th> </th>
@@ -15,15 +15,19 @@ function DataTable(props) {
     </tr>
   );
 
-  const rows = data.map((item) => (
-    <tr key={item.id} >
-      <td className="expand" >+</td>
-      <td>{item.target.gene_info.symbol}</td>
-      <td>{item.target.id}</td>
-      <td>{item.target.gene_info.name}</td>
-      <td>{item.association_score.overall}</td>
-    </tr>
-  ));
+  useEffect(() => {
+    const sortedData = [ ...data ];
+    sortedData.sort((a, b) => b.association_score.overall - a.association_score.overall);
+    setRows(sortedData.map((item) => (
+      <tr key={item.id} >
+        <td className="expand" >+</td>
+        <td>{item.target.gene_info.symbol}</td>
+        <td>{item.target.id}</td>
+        <td>{item.target.gene_info.name}</td>
+        <td>{item.association_score.overall}</td>
+      </tr>
+    )));
+  }, [data]);
 
   return (
     <table>
