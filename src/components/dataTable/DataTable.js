@@ -46,7 +46,7 @@ function DataTable(props) {
       const { datatypes } = item.association_score;
       itemRow.push(
         <tr key={`${item.id}-expanded`} >
-          <td colSpan="5" >
+          <td className="chart" colSpan="5" align="center" >
             <AssociationScoreChart datatypes={datatypes}/>
           </td>
         </tr>

@@ -7,9 +7,13 @@ td {
 }
 
 td.expand {
-  color: blue;
+  color: #398AC8;
   font-weight: bold;
   cursor: pointer;
+}
+
+td.chart {
+  padding: 0;
 }
 
 table, td, th {

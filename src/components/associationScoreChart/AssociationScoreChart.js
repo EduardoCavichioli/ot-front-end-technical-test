@@ -1,26 +1,22 @@
 import React from 'react';
+import {
+  Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis
+} from 'recharts';
 import { datatypesType } from '../../helpers/types';
 
 function AssociationScoreChart(props) {
-  const {
-    literature,
-    rna_expression,
-    genetic_association,
-    somatic_mutation,
-    known_drug,
-    animal_model,
-    affected_pathway
-  } = props.datatypes;
-  
+  const { datatypes } = props;
+  const chartData = Object.entries(datatypes).map((el) => Object.assign({ name: el[0], value: el[1] }));
+
   return (
     <div>
-      <span>{literature}</span><br/>
-      <span>{rna_expression}</span><br/>
-      <span>{genetic_association}</span><br/>
-      <span>{somatic_mutation}</span><br/>
-      <span>{known_drug}</span><br/>
-      <span>{animal_model}</span><br/>
-      <span>{affected_pathway}</span>
+      <h3>Association Score vs Data Type</h3>
+      <RadarChart cx={250} cy={125} outerRadius={100} width={500} height={250} data={chartData} >
+        <PolarGrid />
+        <PolarAngleAxis dataKey="name" />
+        <PolarRadiusAxis />
+        <Radar dataKey="value" stroke="#398AC8" fill="#398AC8" fillOpacity={0.5} dot />
+      </RadarChart>
     </div>
   );
 }
